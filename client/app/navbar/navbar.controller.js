@@ -7,10 +7,12 @@ class NavbarController {
   constructor($rootScope, Auth, $state) {
     this.Auth = Auth;
     this.$state = $state;
-    this.isLoggedIn = Auth.isLoggedIn;
     this.$rootScope = $rootScope;
     $(".button-collapse").sideNav();
     this.$rootScope.login = false;
+    this.isLoggedIn = Auth.isLoggedIn;
+    this.isAdmin = Auth.isAdmin;
+    this.isUser = Auth.isUser;
 
   }
 
@@ -18,7 +20,13 @@ class NavbarController {
 
   }
 
-
+  logout(){
+    let aux = this;
+    var response = aux.Auth.logout();
+    if (response === true) {
+      aux.$state.go('home');
+    }
+  }
 
 }
 

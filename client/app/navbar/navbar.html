@@ -6,14 +6,20 @@
     <a href="#" data-activates="mobile-nav-side" class="button-collapse"><i class="material-icons">menu</i></a>
 
     <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li ng-show="nav.isUser()"><a ui-sref="login">Catálogo</a></li>
+      <li ng-show="nav.isAdmin()"><a ui-sref="login">Catálogo</a></li>
+      <li ng-show="nav.isAdmin()"><a ui-sref="login">Usuarios</a></li>
       <li ng-hide="nav.isLoggedIn()"><a ui-sref="login">Login</a></li>
-      <li ng-show="nav.isLoggedIn()"><a href="#!">Logout</a></li>
+      <li ng-show="nav.isLoggedIn()"><a href="#!" ng-click="nav.logout()">Logout</a></li>
     </ul>
 
 
     <ul class="side-nav" id="mobile-nav-side">
+      <li ng-show="nav.isUser()"><a ui-sref="login">Catálogo</a></li>
+      <li ng-show="nav.isAdmin()"><a ui-sref="login">Catálogo</a></li>
+      <li ng-show="nav.isAdmin()"><a ui-sref="login">Usuarios</a></li>
       <li ng-hide="nav.isLoggedIn()"><a ui-sref="login">Login</a></li>
-      <li ng-show="nav.isLoggedIn()"><a href="#!">Logout</a></li>
+      <li ng-show="nav.isLoggedIn()"><a href="#!" ng-click="nav.logout()">Logout</a></li>
     </ul>
   </div>
 </nav>

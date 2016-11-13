@@ -37,6 +37,32 @@ function serviceAuth($rootScope) {
     return response;
   }
 
+  function logout() {
+    var response = "";
+    $rootScope.login = false;
+    delete $rootScope.currentUser;
+    response = true;
+    return response;
+  }
+
+  function isAdmin() {
+    if($rootScope.login === true && $rootScope.currentUser.role === 'ADMIN') {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
+  function isUser() {
+    if($rootScope.login === true && $rootScope.currentUser.role === 'USER') {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
   var users = [{
     _id:'577400f503c12db2197dd092',
     user: 'james.garzon',
@@ -47,7 +73,7 @@ function serviceAuth($rootScope) {
     phone : '312242563',
     email: 'james.garzon@jecnotas.com',
     password: 'james',
-    role :'ADMIN'
+    role :'USER'
   }, {
     _id:'5774016f4dd1ca16267f42db',
     user: 'camilo.guerra',
@@ -69,13 +95,16 @@ function serviceAuth($rootScope) {
     telefono :  '5435672892',
     email: 'esteban.salazar@jecnotas.com',
     password: 'esteban',
-    role: 'USER'
+    role: 'ADMIN'
   }];
 
   var service = {
     isLoggedIn: isLoggedIn,
     getCurrentUser: getCurrentUser,
-    login: login
+    login: login,
+    logout: logout,
+    isAdmin: isAdmin,
+    isUser: isUser
   };
 
   return service;
