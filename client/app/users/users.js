@@ -2,8 +2,8 @@
 
 angular.module('comicsApp')
   .config(function($stateProvider) {
-    $stateProvider.state('login', {
-      url: '/login',
-      template: '<login></login>'
+    $stateProvider.state('users', {
+      url: '/users',
+      template: '<users></users>'
     });
   });

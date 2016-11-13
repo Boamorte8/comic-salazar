@@ -55,13 +55,30 @@ function serviceAuth($rootScope) {
   }
 
   function isUser() {
-    if($rootScope.login === true && $rootScope.currentUser.role === 'USER') {
+    if($rootScope.login === true && ($rootScope.currentUser.role === 'USER' || $rootScope.currentUser.role === 'EMPLOYEE')) {
       return true;
     }
     else {
       return false;
     }
   }
+
+  function getUsers() {
+    var response = users;
+    return response;
+
+  }
+
+
+  var service = {
+    isLoggedIn: isLoggedIn,
+    getCurrentUser: getCurrentUser,
+    login: login,
+    logout: logout,
+    isAdmin: isAdmin,
+    isUser: isUser,
+    getUsers: getUsers
+  };
 
   var users = [{
     _id:'577400f503c12db2197dd092',
@@ -71,7 +88,7 @@ function serviceAuth($rootScope) {
     documento: '1040040988',
     city : 'MEDELLIN',
     phone : '312242563',
-    email: 'james.garzon@jecnotas.com',
+    email: 'james.garzon@comics.com',
     password: 'james',
     role :'USER'
   }, {
@@ -82,10 +99,32 @@ function serviceAuth($rootScope) {
     documento : '1152203500',
     city : 'MEDELLIN',
     phone :  '312242563',
-    email: 'camilo.guerra@jecnotas.com',
+    email: 'camilo.guerra@comics.com',
     password: 'camilo',
     role : 'EMPLOYEE'
   },{
+    _id:'577400f503c12db2197dd093',
+    user: 'catalina.osorno',
+    names: 'CATALINA',
+    lastnames: 'OSORNO',
+    documento: '1040040981',
+    city : 'MEDELLIN',
+    phone : '312242583',
+    email: 'catalina.osorno@comics.com',
+    password: 'catalina',
+    role :'USER'
+  }, {
+    _id:'5774016f4dd1ca16267f42d0',
+    user: 'nelson.salazar',
+    names: 'NELSON',
+    lastnames: 'SALAZAR',
+    documento : '1152203501',
+    city : 'LA ESTRELLA',
+    phone :  '312252763',
+    email: 'nelson.salazar@comics.com',
+    password: 'nelson',
+    role : 'EMPLOYEE'
+  }, {
     _id:'5774016f4dd1ca16267f42dd',
     user: 'esteban.salazar',
     names: 'ESTEBAN',
@@ -93,19 +132,10 @@ function serviceAuth($rootScope) {
     documento : '1039455449',
     ciudad : 'SABANETA',
     telefono :  '5435672892',
-    email: 'esteban.salazar@jecnotas.com',
+    email: 'esteban.salazar@comics.com',
     password: 'esteban',
     role: 'ADMIN'
   }];
-
-  var service = {
-    isLoggedIn: isLoggedIn,
-    getCurrentUser: getCurrentUser,
-    login: login,
-    logout: logout,
-    isAdmin: isAdmin,
-    isUser: isUser
-  };
 
   return service;
 
