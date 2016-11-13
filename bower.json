@@ -1,0 +1,22 @@
+{
+  "name": "comicSalazar",
+  "authors": [
+    "boamorte8 <salazar.z.esteban@gmail.com>"
+  ],
+  "description": "Aplicacion para tienda de Comics",
+  "main": "server.js",
+  "license": "ISC",
+  "homepage": "",
+  "private": true,
+  "dependencies": {
+    "angular": "^1.5.8",
+    "materialize": "^0.97.8",
+    "angular-materialize": "^0.2.1",
+    "angular-ui-router": "^0.3.2"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ]
+}

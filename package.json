@@ -1,0 +1,16 @@
+{
+  "name": "comisalazar",
+  "version": "0.1.0",
+  "description": "Aplicacion para tienda de Comics",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "export NODE_ENV=dev&& (nodemon server/server.js || node server/server.js)",
+    "startw": "set NODE_ENV=dev&& (nodemon server/server.js || node server/server.js)"
+  },
+  "author": "Esteban Salazar",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.5.2",
+    "express": "^4.14.0"
+  }
+}

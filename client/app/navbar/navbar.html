@@ -1,0 +1,19 @@
+<nav class="deep-purple darken-4">
+  <div class="nav-wrapper">
+    <a ui-sref="home" class="brand-logo hide-on-med-and-down" style="margin-left:1em">Comics Store</a>
+    <a ui-sref="home" class="brand-logo hide-on-large-only">Comics Store</a>
+
+    <a href="#" data-activates="mobile-nav-side" class="button-collapse"><i class="material-icons">menu</i></a>
+
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li ng-hide="nav.isLoggedIn()"><a ui-sref="login">Login</a></li>
+      <li ng-show="nav.isLoggedIn()"><a href="#!">Logout</a></li>
+    </ul>
+
+
+    <ul class="side-nav" id="mobile-nav-side">
+      <li ng-hide="nav.isLoggedIn()"><a ui-sref="login">Login</a></li>
+      <li ng-show="nav.isLoggedIn()"><a href="#!">Logout</a></li>
+    </ul>
+  </div>
+</nav>
