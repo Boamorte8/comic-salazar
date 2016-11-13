@@ -1,0 +1,37 @@
+/* label color */
+ .form-group label {
+   color: #4A148C;
+ }
+ /* label focus color */
+ .form-group input[type=text]:focus + label {
+   color: #4A148C;
+ }
+ /* label underline focus color */
+ .form-group input[type=text]:focus {
+   border-bottom: 1px solid #4A148C;
+   box-shadow: 0 1px 0 0 #4A148C;
+ }
+ /* label underline focus color */
+ .form-group input[type=password]:focus {
+   border-bottom: 1px solid #4A148C;
+   box-shadow: 0 1px 0 0 #4A148C;
+ }
+ /* valid color */
+ .form-group input[type=text].valid {
+   border-bottom: 1px solid #4A148C;
+   box-shadow: 0 1px 0 0 #4A148C;
+ }
+ /* valid color */
+ .form-group input[type=password].valid {
+   border-bottom: 1px solid #4A148C;
+   box-shadow: 0 1px 0 0 #4A148C;
+ }
+ /* invalid color */
+ /*.input-field input[type=text].invalid {
+   border-bottom: 1px solid #000;
+   box-shadow: 0 1px 0 0 #000;
+ }*/
+ /* icon prefix focus color */
+ .form-group .prefix.active {
+   color: #4A148C;
+ }

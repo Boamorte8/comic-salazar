@@ -22,8 +22,7 @@
 
       if (form.$valid && aux.user) {
         var response = aux.Auth.login(aux.user);
-
-        if (response === undefined) {
+        if (response === undefined || response === null) {
           aux.errors = true;
         }
         else {
@@ -32,12 +31,15 @@
           aux.$state.go('home');
         }
       }
+      else {
+        aux.errors = true;
+      }
     }
 
     validacion(){
       let aux = this;
       if (aux.$rootScope.login === true) {
-        this.$state.go('home');
+        aux.$state.go('home');
       }
     }
 

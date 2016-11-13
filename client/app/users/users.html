@@ -1,9 +1,113 @@
-<header class="hero-unit purple darken-3" id="banner">
+<header class="hero-unit purple darken-3" id="banner" ng-init="uc.validacion()">
   <div class="container">
     <h1>Usuarios</h1>
   </div>
 </header>
 
 <div class="container">
+  <div class="row">
+    <!-- <i class="material-icons prefix">person_outline</i> -->
+    <div class="input-field col s12 m7 l4 ">
+      <select class="browser-default" ng-model="uc.role" material-select>
+        <option value="">Seleccione el tipo de usuario</option>
+        <option value="EMPLOYEE">Empleados</option>
+        <option value="USER">Usuarios</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <table class="bordered striped highlight centered responsive-table">
+      <thead>
+        <tr>
+          <th data-field="name">Nombres</th>
+          <th data-field="lname">Apellidos</th>
+          <th data-field="id">Documento</th>
+          <th data-field="phone">Telefono</th>
+          <th data-field="email">Correo</th>
+          <th></th>
+        </tr>
+      </thead>
 
+      <tbody>
+        <tr ng-if="user.role===uc.role" ng-repeat="user in uc.users">
+          <td>{{user.names}}</td>
+          <td>{{user.lastnames}}</td>
+          <td>{{user.documento}}</td>
+          <td>{{user.phone}}</td>
+          <td>{{user.email}}</td>
+          <td><a class="btn-floating waves-effect waves-light amber lighten-1" ng-click="uc.edit(user)"><i class="material-icons">mode_edit</i></a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="fixed-action-btn">
+    <a class="btn-floating btn-large waves-effect waves-light purple darken-3" href="#modalCreateUser"><i class="material-icons">add</i></a>
+  </div>
+</div>
+
+<div id="modalCreateUser" class="modal">
+
+  <div class="modal-content">
+    <div class="container">
+
+      <!-- Form Create User -->
+      <div class="">
+        <blockquote><h6>Nota: Todos los campos son obligatorios</h6></blockquote>
+        <form id="form_create_user" ng-model="uc.newUser">
+          <div class="row">
+            <div class="input-field col s12 m6 l6">
+              <i class="material-icons prefix">perm_identity</i>
+              <input id="text_names" class="text validate" type="text" ng-model="uc.newUser.names" required="" aria-required="true">
+              <label for="text_names" data-error="Error">*Nombres</label>
+            </div>
+            <div class="input-field col s12 m6 l6">
+              <input id="text_lnames" class="text validate" type="text" ng-model="uc.newUser.lastnames" required="" aria-required="true">
+              <label for="text_lnames" data-error="Error">*Apellidos</label>
+            </div>
+          </div>
+          <div class="input-field">
+            <i class="material-icons prefix">perm_identity</i>
+            <input id="text_documento" class="text validate" type="text" ng-model="uc.newUser.documento" required="" aria-required="true">
+            <label for="text_documento" data-error="Error">*Nombres</label>
+          </div>
+          <!-- <div class="form-group col l3">
+            <label>User</label>
+            <input type="text" name="user" class="form-control" ng-model="lc.user.user" required>
+          </div>
+
+          <div class="form-group col l3">
+            <label>Password</label>
+            <input type="password" name="password" class="form-control" ng-model="lc.user.password" required>
+          </div> -->
+          <!-- <div class="input-field">
+            <i class="material-icons prefix">swap_vertical_circle</i>
+            <input id="input_peso_nuevo"  type="number" min="0" max="100" step="0.1" class="validate" ng-model="nc.pesoNuevaActividad" ng-change="nc.verificarPeso(nc.pesoNuevaActividad, 0)">
+            <label for="input_peso_nuevo" data-error="Error">*Peso</label>
+          </div>
+
+
+          <div class="input-field">
+            <i class="material-icons prefix">view_list</i>
+            <select class="validate" multiple ng-model="nc.nuevaActividad.desempenos" ng-options="desempeno.nombre for desempeno in nc.desempenos" material-select watch required="">
+              <option value="" disabled selected>Escoja una o varias opciones</option>
+            </select>
+            <label data-error="Error">*Desempeños</label>
+          </div> -->
+
+
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="row">
+      <div class="col s4 l4 m5">
+        <a class="waves-effect waves-light btn purple darken-3" type="submit" name="action" ng-click="uc.createUser(uc.newUser)">Crear</a>
+      </div>
+      <div class="col s4 offset-s3 l3 offset-l5 m3 offset-m4">
+        <a href="#!" class=" modal-action modal-close waves-effect  waves-light btn amber lighten-1" ng-click="uc.newUser = {}">Cancelar</a>
+      </div>
+    </div>
+  </div>
 </div>

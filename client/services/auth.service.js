@@ -109,7 +109,7 @@ function serviceAuth($rootScope) {
     lastnames: 'OSORNO',
     documento: '1040040981',
     city : 'MEDELLIN',
-    phone : '312242583',
+    phone : '313242583',
     email: 'catalina.osorno@comics.com',
     password: 'catalina',
     role :'USER'
@@ -120,7 +120,7 @@ function serviceAuth($rootScope) {
     lastnames: 'SALAZAR',
     documento : '1152203501',
     city : 'LA ESTRELLA',
-    phone :  '312252763',
+    phone :  '314252763',
     email: 'nelson.salazar@comics.com',
     password: 'nelson',
     role : 'EMPLOYEE'
@@ -131,7 +131,7 @@ function serviceAuth($rootScope) {
     lastnames: 'SALAZAR',
     documento : '1039455449',
     ciudad : 'SABANETA',
-    telefono :  '5435672892',
+    telefono :  '54372892',
     email: 'esteban.salazar@comics.com',
     password: 'esteban',
     role: 'ADMIN'
