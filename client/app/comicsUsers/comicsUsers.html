@@ -8,14 +8,29 @@
   <div class="row">
     <div class="input-field col s12 m8 l6 ">
       <i class="material-icons prefix">search</i>
-      <input id="text_comic" type="text" ng-model="cuc.comicb">
+      <input id="text_comic" type="text" ng-model="searchComic.title">
       <label for="text_comic" data-error="Error">*Busqueda por título</label>
     </div>
   </div>
 </div>
 
+<!-- style="width:50px;height:50px;" -->
 <div class="row">
-  <div class="card-panel">
-    
+  <div class="col s12 m6 l4" ng-repeat="comic in cuc.comics | orderBy:'title' | limitTo:cuc.numberComicsShows | filter: searchComic">
+    <div class="card" >
+      <div class="card-image">
+        <img ng-src="assets/images/{{comic.image}}.jpg" style="height:200px;">
+      </div>
+      <div class="card-content center-align">
+        <span class="card-title">{{comic.title}}</span>
+      </div>
+      <div class="card-action center-align">
+        <a href="#">Ver descripción</a>
+      </div>
+    </div>
   </div>
+</div>
+
+<div class="row center-align">
+  <a class="waves-effect waves-light btn purple darken-3" ng-hide="cuc.showoff" ng-click="cuc.showMore()">Mostrar mas</a>
 </div>
