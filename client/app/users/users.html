@@ -6,8 +6,8 @@
 
 <div class="container">
   <div class="row">
-    <!-- <i class="material-icons prefix">person_outline</i> -->
     <div class="input-field col s12 m7 l4 ">
+      <!-- <i class="material-icons prefix">person_outline</i> -->
       <select class="browser-default" ng-model="uc.role" material-select>
         <option value="">Seleccione el tipo de usuario</option>
         <option value="EMPLOYEE">Empleados</option>
@@ -49,57 +49,72 @@
 <div id="modalCreateUser" class="modal">
 
   <div class="modal-content">
-    <div class="container">
-
-      <!-- Form Create User -->
-      <div class="">
-        <blockquote><h6>Nota: Todos los campos son obligatorios</h6></blockquote>
-        <form id="form_create_user" ng-model="uc.newUser">
-          <div class="row">
-            <div class="input-field col s12 m6 l6">
-              <i class="material-icons prefix">perm_identity</i>
-              <input id="text_names" class="text validate" type="text" ng-model="uc.newUser.names" required="" aria-required="true">
-              <label for="text_names" data-error="Error">*Nombres</label>
-            </div>
-            <div class="input-field col s12 m6 l6">
-              <input id="text_lnames" class="text validate" type="text" ng-model="uc.newUser.lastnames" required="" aria-required="true">
-              <label for="text_lnames" data-error="Error">*Apellidos</label>
-            </div>
-          </div>
-          <div class="input-field">
+    <!-- Form Create User -->
+    <div class="center-align">
+      <h3>Crear Usuario</h3>
+      <blockquote><h6>Nota: Todos los campos son obligatorios</h6></blockquote>
+      <form id="form_create_user" ng-model="uc.newUser" ng-change="uc.errors=false">
+        <div class="row">
+          <div class="input-field col s12 m6 l6">
             <i class="material-icons prefix">perm_identity</i>
-            <input id="text_documento" class="text validate" type="text" ng-model="uc.newUser.documento" required="" aria-required="true">
-            <label for="text_documento" data-error="Error">*Nombres</label>
+            <input id="text_names" class="text validate" type="text" ng-model="uc.newUser.names" style="text-transform:uppercase" required="" aria-required="true">
+            <label for="text_names" data-error="Error">*Nombres</label>
           </div>
-          <!-- <div class="form-group col l3">
-            <label>User</label>
-            <input type="text" name="user" class="form-control" ng-model="lc.user.user" required>
+          <div class="input-field col s12 m6 l6">
+            <input id="text_lnames" class="text validate" type="text" ng-model="uc.newUser.lastnames" style="text-transform:uppercase" required="" aria-required="true">
+            <label for="text_lnames" data-error="Error">*Apellidos</label>
           </div>
-
-          <div class="form-group col l3">
-            <label>Password</label>
-            <input type="password" name="password" class="form-control" ng-model="lc.user.password" required>
-          </div> -->
-          <!-- <div class="input-field">
-            <i class="material-icons prefix">swap_vertical_circle</i>
-            <input id="input_peso_nuevo"  type="number" min="0" max="100" step="0.1" class="validate" ng-model="nc.pesoNuevaActividad" ng-change="nc.verificarPeso(nc.pesoNuevaActividad, 0)">
-            <label for="input_peso_nuevo" data-error="Error">*Peso</label>
+        </div>
+        <div class="row">
+          <div class="input-field col s12 m6 l6">
+            <i class="material-icons prefix">perm_identity</i>
+            <input id="text_documento" class="validate" type="number" ng-model="uc.newUser.documento" required="" min="100000" step="1">
+            <label for="text_documento" data-error="Error">*Documento</label>
           </div>
-
-
-          <div class="input-field">
-            <i class="material-icons prefix">view_list</i>
-            <select class="validate" multiple ng-model="nc.nuevaActividad.desempenos" ng-options="desempeno.nombre for desempeno in nc.desempenos" material-select watch required="">
-              <option value="" disabled selected>Escoja una o varias opciones</option>
+          <div class="input-field col s12 m6 l6">
+            <i class="material-icons prefix">perm_identity</i>
+            <input id="text_user" class="text validate" type="text" ng-model="uc.newUser.user" required="" aria-required="true">
+            <label for="text_user" data-error="Error">*Usuario</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12 m6 l6">
+            <i class="material-icons prefix">location_city</i>
+            <input id="text_city" class="text validate" type="text" ng-model="uc.newUser.city" style="text-transform:uppercase" required="" aria-required="true">
+            <label for="text_city" data-error="Error">*Ciudad</label>
+          </div>
+          <div class="input-field col s12 m6 l6">
+            <i class="material-icons prefix">local_phone</i>
+            <input id="text_phone" class="validate" type="number" ng-model="uc.newUser.phone" required="" aria-required="true" min="999999" step="1">
+            <label for="text_phone" data-error="Error">*Teléfono</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12 m6 l6">
+            <i class="material-icons prefix">email</i>
+            <input id="text_email" class="text validate" type="email" ng-model="uc.newUser.email" required="" aria-required="true">
+            <label for="text_email" data-error="Error">*Email</label>
+          </div>
+          <div class="input-field col s12 m6 l6">
+            <i class="material-icons prefix">lock</i>
+            <input id="text_password" class="text validate" type="text" ng-model="uc.newUser.password" required="" aria-required="true" ng-change="uc.validate(uc.newUser.password)">
+            <label for="text_password" data-error="Error">*Password</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12 m8 l7 ">
+            <select class="browser-default" ng-model="uc.newUser.role" material-select required="">
+              <option value="">Seleccione el tipo de usuario</option>
+              <option value="EMPLOYEE">Empleado</option>
+              <option value="USER">Usuario</option>
             </select>
-            <label data-error="Error">*Desempeños</label>
-          </div> -->
-
-
-        </form>
-      </div>
+          </div>
+        </div>
+      </form>
+      <blockquote ng-if="uc.errors"><h6>Error: Hay campos vacios o mal llenados</h6></blockquote>
     </div>
   </div>
+
   <div class="modal-footer">
     <div class="row">
       <div class="col s4 l4 m5">

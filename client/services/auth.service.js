@@ -69,6 +69,22 @@ function serviceAuth($rootScope) {
 
   }
 
+  function createUser(newUser) {
+    var resp = users.some(user => user.documento === newUser.documento);
+    var response = false;
+    newUser.names = newUser.names.toUpperCase();
+    newUser.lastnames = newUser.lastnames.toUpperCase();
+    newUser.city = newUser.city.toUpperCase();
+
+    if (resp === false) {
+      users.push(newUser);
+      response = true;
+    }
+    return response;
+
+  }
+
+
 
   var service = {
     isLoggedIn: isLoggedIn,
@@ -77,7 +93,8 @@ function serviceAuth($rootScope) {
     logout: logout,
     isAdmin: isAdmin,
     isUser: isUser,
-    getUsers: getUsers
+    getUsers: getUsers,
+    createUser: createUser
   };
 
   var users = [{

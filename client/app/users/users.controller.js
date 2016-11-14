@@ -33,6 +33,28 @@
       Materialize.toast('Funcionalidad en contrucción', 6000);
     }
 
+    validate(password){
+
+    }
+
+    createUser(newUser){
+      let aux = this;
+      if(newUser === undefined || newUser.names === undefined || newUser.lastnames === undefined || newUser.documento === undefined || newUser.user === undefined || newUser.city === undefined || newUser.phone === undefined || newUser.email === undefined || newUser.password === undefined || newUser.role === undefined){
+        aux.errors = true;
+      } else {
+        var response = aux.Auth.createUser(newUser);
+        if (response === true) {
+          $('#modalCreateUser').modal('close');
+          aux.users = aux.Auth.getUsers();
+          Materialize.toast('Usuario creado exitosamente', 6000);
+          aux.newUser = {};
+        }
+        else {
+          Materialize.toast('El usuario ya existe', 6000);
+        }
+      }
+    }
+
   }
 
   angular.module('comicsApp')
