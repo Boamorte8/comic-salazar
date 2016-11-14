@@ -25,6 +25,7 @@ class NavbarController {
     var response = aux.Auth.logout();
     if (response === true) {
       aux.$state.go('home');
+      Materialize.toast('Ingrese de nuevo para seguir navegando', 7000);
     }
   }
 

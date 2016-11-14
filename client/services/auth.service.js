@@ -24,16 +24,20 @@ function serviceAuth($rootScope) {
 
   function login(user) {
     var response = "";
+    var resp = false;
     users.forEach(userr => {
       if(user.user === userr.user && user.password === userr.password){
         currentUser = angular.copy(userr);
         delete currentUser.password;
-        response = currentUser;
+        resp = true;
       }
       else{
         response = null;
       }
     });
+    if (resp === true) {
+      response = currentUser;
+    }
     return response;
   }
 
@@ -83,8 +87,6 @@ function serviceAuth($rootScope) {
     return response;
 
   }
-
-
 
   var service = {
     isLoggedIn: isLoggedIn,
