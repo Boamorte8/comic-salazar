@@ -17,15 +17,15 @@
 <!-- style="width:50px;height:50px;" -->
 <div class="row">
   <div class="col s12 m6 l4" ng-repeat="comic in cuc.comics | orderBy:'title' | limitTo:cuc.numberComicsShows | filter: searchComic">
-    <div class="card" >
+    <div class="card hoverable" >
       <div class="card-image">
         <img ng-src="assets/images/{{comic.image}}.jpg" style="height:200px;">
       </div>
       <div class="card-content center-align">
-        <span class="card-title">{{comic.title}}</span>
+        <span class="card-title"><b>{{comic.title}}</b></span>
       </div>
       <div class="card-action center-align">
-        <a href="#">Ver descripción</a>
+        <a ng-click="cuc.selectedComic = comic" href="#modalShowDescription">Ver descripción</a>
       </div>
     </div>
   </div>
@@ -33,4 +33,47 @@
 
 <div class="row center-align">
   <a class="waves-effect waves-light btn purple darken-3" ng-hide="cuc.showoff" ng-click="cuc.showMore()">Mostrar mas</a>
+</div>
+
+<!-- <div class="fixed-action-btn">
+  <a class="btn-floating btn-large waves-effect waves-light purple darken-3" href="#modalCreateUser"><i class="material-icons">add</i></a>
+</div> -->
+
+<div id="modalShowDescription" class="modal">
+
+  <div class="modal-content">
+    <!-- Form Create User -->
+    <div class="card-panel">
+      <div class="center-align purple darken-3 white-text">
+        <h3><b>{{cuc.selectedComic.title}}</b></h3>
+      </div>
+      <div class="row">
+        <div class="col s12 m8 l8">
+          <h5><b>Descripción: </b></h5>
+          <p>{{cuc.selectedComic.description}}</p>
+        </div>
+        <div class="col s12 m4 l4">
+          <img class="responsive-img" ng-src="assets/images/{{cuc.selectedComic.image}}.jpg" style="height:250px;">
+        </div>
+      </div>
+    </div>
+    <div class="card-panel">
+      <div class="">
+        <h5><b>Comentarios: </b></h5>
+      </div>
+      <div class="card-panel" ng-repeat="comment in cuc.selectedComic.comments">
+        <b>Por: {{comment.author}}</b>
+        <p>
+          {{comment.comment}}
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="modal-footer">
+    <div class="row center-align">
+      <a href="#!" class=" modal-action modal-close waves-effect  waves-light btn amber lighten-1">Cancelar</a>
+    </div>
+  </div>
 </div>
