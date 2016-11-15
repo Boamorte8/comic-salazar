@@ -8,8 +8,20 @@ function serviceComic() {
     return response;
   }
 
+  function addComic(newComic) {
+    var resp = comics.some(comic => comic.title === newComic.title);
+    var response = false;
+
+    if (resp === false) {
+      comics.push(newComic);
+      response = true;
+    }
+    return response;
+  }
+
   var service = {
-    getComics: getComics
+    getComics: getComics,
+    addComic: addComic
   };
 
   var comics = [{

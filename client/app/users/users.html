@@ -5,16 +5,14 @@
 </header>
 
 <div class="container">
-  <div class="row">
-    <div class="input-field col s12 m7 l4 ">
-      <!-- <i class="material-icons prefix">person_outline</i> -->
-      <select class="browser-default" ng-model="uc.role" material-select>
-        <option value="">Seleccione el tipo de usuario</option>
-        <option value="EMPLOYEE">Empleados</option>
-        <option value="USER">Usuarios</option>
-      </select>
+  <br>
+  <div class="container center-align">
+    <div class="row" ng-init="uc.style0='purple darken-3'; uc.style1='btn-flat' ">
+      <a class="waves-effect waves-light btn" ng-class="uc.style0" ng-click="uc.seeEmployees()">Ver Empleados</a>
+      <a class="waves-effect waves-light btn" ng-class="uc.style1" ng-click="uc.seeUsers()">Ver Usuarios</a>
     </div>
   </div>
+
   <div class="row">
     <table class="bordered striped highlight centered responsive-table">
       <thead>

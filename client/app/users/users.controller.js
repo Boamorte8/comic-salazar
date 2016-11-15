@@ -9,7 +9,7 @@
       this.Auth = Auth;
       this.$state = $state;
       this.types = ['EMPLOYEE', 'USER'];
-      this.role = '';
+      this.role = 'EMPLOYEE';
       $('select').material_select();
       $('.modal').modal();
     }
@@ -53,6 +53,20 @@
           Materialize.toast('El usuario ya existe', 6000);
         }
       }
+    }
+
+    seeEmployees(){
+      let aux = this;
+      aux.role = 'EMPLOYEE';
+      aux.style0 = 'purple darken-3';
+      aux.style1 = 'btn-flat';
+    }
+
+    seeUsers(){
+      let aux = this;
+      aux.role = 'USER';
+      aux.style0 = 'btn-flat';
+      aux.style1 = 'purple darken-3';
     }
 
   }

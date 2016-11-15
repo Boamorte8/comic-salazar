@@ -1,0 +1,187 @@
+<header class="hero-unit purple darken-3" id="banner" ng-init="cac.validacion()">
+  <div class="container">
+    <h1>Catálogo</h1>
+  </div>
+</header>
+<div class="container">
+  <div class="row">
+    <div class="input-field col s12 m8 l6 ">
+      <i class="material-icons prefix">search</i>
+      <input id="text_comic" type="text" ng-model="searchComic.title">
+      <label for="text_comic" data-error="Error">*Busqueda por título</label>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col s12 m6 l4" ng-repeat="comic in cac.comics | orderBy:'title' | limitTo:cac.numberComicsShows | filter: searchComic">
+    <div class="card hoverable" >
+      <div class="card-image">
+        <img ng-src="assets/images/{{comic.image}}.jpg" style="height:200px;">
+      </div>
+      <div class="card-content center-align">
+        <span class="card-title"><b>{{comic.title}}</b></span>
+      </div>
+      <div class="card-action center-align">
+        <a ng-click="cac.selectedComic = comic" href="#modalShowDescription">Ver descripción</a>
+        <a ng-click="cac.selectedComic = comic" href="#modalEditComic">Editar</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row center-align">
+  <a class="waves-effect waves-light btn purple darken-3" ng-hide="cac.showoff" ng-click="cac.showMore()">Mostrar mas</a>
+</div>
+<div class="fixed-action-btn">
+  <a class="btn-floating btn-large waves-effect waves-light purple darken-3" href="#modalAddComic"><i class="material-icons">add</i></a>
+</div>
+
+<!-- Modal Show Details Comic -->
+<div id="modalShowDescription" class="modal">
+  <div class="modal-content">
+    <!-- Form Create User -->
+    <div class="card-panel">
+      <div class="center-align purple darken-3 white-text">
+        <h3><b>{{cac.selectedComic.title}}</b></h3>
+      </div>
+      <div class="row">
+        <div class="col s12 m8 l8">
+          <h5><b>Descripción: </b></h5>
+          <p>{{cac.selectedComic.description}}</p>
+        </div>
+        <div class="col s12 m4 l4">
+          <img class="responsive-img" ng-src="assets/images/{{cac.selectedComic.image}}.jpg" style="height:250px;">
+        </div>
+      </div>
+    </div>
+    <div class="card-panel">
+      <div class="">
+        <h5><b>Comentarios: </b></h5>
+      </div>
+      <div class="card-panel" ng-repeat="comment in cac.selectedComic.comments">
+        <b>Por: {{comment.author}}</b>
+        <p>
+          {{comment.comment}}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <div class="row center-align">
+      <a href="#!" class=" modal-action modal-close waves-effect  waves-light btn amber lighten-1">Cancelar</a>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Add Comic -->
+<div id="modalAddComic" class="modal">
+  <div class="modal-content">
+    <!-- Form Create User -->
+    <div class="center-align">
+      <h3>Agregar Comic</h3>
+      <blockquote><h6>Nota: Todos los campos son obligatorios</h6></blockquote>
+      <form id="form_add_comic" ng-model="cac.newComic" ng-change="cac.errors=false">
+        <div class="row">
+          <div class="input-field col s12 m6 l6">
+            <i class="material-icons prefix">collections</i>
+            <input id="text_title" class="text validate" type="text" ng-model="cac.newComic.title" required="" aria-required="true">
+            <label for="text_title" data-error="Error">*Título</label>
+          </div>
+          <div class="input-field col s12 m6 l6">
+            <i class="material-icons prefix">image</i>
+            <input id="text_image" class="text validate" type="text" ng-model="cac.newComic.image"   required="" aria-required="true">
+            <label for="text_image" data-error="Error">*Imagen (Solo el nombre)</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12 m12 l12">
+            <i class="material-icons prefix">description</i>
+            <textarea id="textarea_description" class="materialize-textarea validate" ng-model="cac.newComic.description" required=""></textarea>
+          <label for="textarea_description" data-error="Error">*Descripcion</label>
+          </div>
+        </div>
+      </form>
+      <blockquote ng-if="cac.errors"><h6>Error: Hay campos vacios o mal llenados</h6></blockquote>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <div class="row">
+      <div class="col s4 l4 m5">
+        <a class="waves-effect waves-light btn purple darken-3" type="submit" name="action" ng-click="cac.addComic(cac.newComic)">Agregar</a>
+      </div>
+      <div class="col s4 offset-s3 l3 offset-l5 m3 offset-m4">
+        <a href="#!" class=" modal-action modal-close waves-effect  waves-light btn amber lighten-1" ng-click="cac.newComic = {}">Cancelar</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Edit Comic -->
+<div id="modalEditComic" class="modal">
+  <div class="modal-content">
+    <!-- Form Create User -->
+    <div class="center-align">
+      <h3>Editar Comic</h3>
+      <blockquote><h6>Nota: Todos los campos son obligatorios</h6></blockquote>
+      <form id="form_edit_comic" ng-model="cac.selectedComic" ng-change="cac.errors=false">
+        <div class="row">
+          <div class="input-field col s12 m6 l6">
+            <i class="material-icons prefix">collections</i>
+            <input id="text_title_edit" class="text validate" type="text" ng-model="cac.selectedComic.title" required="" aria-required="true">
+            <label for="text_title_edit" data-error="Error">*Título</label>
+          </div>
+          <div class="input-field col s12 m6 l6">
+            <i class="material-icons prefix">image</i>
+            <input id="text_image_edit" class="text validate" type="text" ng-model="cac.selectedComic.image"   required="" aria-required="true">
+            <label for="text_image_edit" data-error="Error">*Imagen (Solo el nombre)</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12 m12 l12">
+            <i class="material-icons prefix">description</i>
+            <textarea id="textarea_description_edit" class="materialize-textarea validate" ng-model="cac.selectedComic.description" required=""></textarea>
+          <label for="textarea_description_edit" data-error="Error">*Descripcion</label>
+          </div>
+        </div>
+        <div class="card-panel">
+          <div class="">
+            <h5><b>Comentarios: </b></h5>
+          </div>
+          <div class="card-panel" ng-repeat="comment in cac.selectedComic.comments">
+            <a class="waves-effect waves-light btn-floating red modal-close" ng-click="cac.deleteComment($index)"><i class="material-icons">delete_forever</i></a><b>Por: {{comment.author}}</b> 
+            <p>
+              {{comment.comment}}
+            </p>
+          </div>
+        </div>
+      </form>
+      <blockquote ng-if="cac.errors"><h6>Error: Hay campos vacios o mal llenados</h6></blockquote>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <div class="row hide-on-small-only">
+      <div class="col m3 l3">
+        <a href="#!" class=" modal-action modal-close waves-effect  waves-light btn amber lighten-1">Cancelar</a>
+      </div>
+      <div class="col m4 l4">
+        <a class="waves-effect waves-light btn red modal-close" ng-click="cac.deleteComic($index)">Eliminar</a>
+      </div>
+      <div class="col m5 l5">
+        <a class="waves-effect waves-light btn orange" type="submit" name="action" ng-click="cac.editComic($index)">Editar</a>
+      </div>
+    </div>
+    <div class="row center-align hide-on-med-and-up">
+      <div class="col s4">
+        <a href="#!" class=" modal-action modal-close waves-effect waves-light btn-floating teal"><i class="material-icons">exit_to_app</i></a>
+      </div>
+      <div class="col s4">
+        <a class="waves-effect waves-light btn-floating red modal-close" ng-click="cac.deleteComic($index)"><i class="material-icons">delete_forever</i></a>
+      </div>
+      <div class="col s4">
+        <a class="waves-effect waves-light btn-floating orange" type="submit" name="action" ng-click="cac.editComic($index)"><i class="material-icons">mode_edit</i></a>
+      </div>
+    </div>
+  </div>
+</div>

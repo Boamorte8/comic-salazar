@@ -8,7 +8,9 @@ class NavbarController {
     this.Auth = Auth;
     this.$state = $state;
     this.$rootScope = $rootScope;
-    $(".button-collapse").sideNav();
+    $(".button-collapse").sideNav({
+      closeOnClick: true
+    });
     this.$rootScope.login = false;
     this.isLoggedIn = Auth.isLoggedIn;
     this.isAdmin = Auth.isAdmin;
