@@ -19,9 +19,23 @@ function serviceComic() {
     return response;
   }
 
+  function editComic(editedComic) {
+    var response = false;
+
+    var resp = comics.forEach(comic => {
+      if (comic.id === editedComic.id) {
+        comic = editedComic;
+        response = true;
+      }
+    });
+
+    return response;
+  }
+
   var service = {
     getComics: getComics,
-    addComic: addComic
+    addComic: addComic,
+    editComic: editComic
   };
 
   var comics = [{

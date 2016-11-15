@@ -56,9 +56,23 @@
       }
     }
 
-    editComic(index){
+    editComic(){
       let aux = this;
-      console.log(index);
+      if(aux.selectedComic === undefined || aux.selectedComic.title === undefined || aux.selectedComic.description === undefined || aux.selectedComic.image === undefined || aux.selectedComic.title === '' || aux.selectedComic.image === '' || aux.selectedComic === ''){
+        aux.errors = true;
+      }
+      else {
+        var response = aux.Comic.editComic(aux.selectedComic);
+        if (response === true) {
+          $('#modalEditComic').modal('close');
+          aux.comics = aux.Comic.getComics();
+          Materialize.toast('Comic editado exitosamente', 6000);
+        }
+        else {
+          Materialize.toast('No se pudo editar. Inténtalo mas tarde.', 6000);
+        }
+      }
+
     }
 
     deleteComment(index){

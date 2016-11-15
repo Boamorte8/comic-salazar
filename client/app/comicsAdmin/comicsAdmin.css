@@ -68,6 +68,20 @@
    border-bottom: 1px solid #4A148C;
    box-shadow: 0 1px 0 0 #4A148C;
  }
+ /* label focus color */
+ .input-field textarea[id="textarea_description_edit"]:focus + label {
+   color: #4A148C;
+ }
+ /* label underline focus color */
+ .input-field textarea[id="textarea_description_edit"]:focus {
+   border-bottom: 1px solid #4A148C;
+   box-shadow: 0 1px 0 0 #4A148C;
+ }
+ /* valid color */
+ .input-field textarea[id="textarea_description_edit"].valid {
+   border-bottom: 1px solid #4A148C;
+   box-shadow: 0 1px 0 0 #4A148C;
+ }
 
  /* invalid color */
  /*.input-field input[type=text].invalid {

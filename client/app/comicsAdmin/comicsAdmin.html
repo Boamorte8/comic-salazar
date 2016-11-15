@@ -133,14 +133,14 @@
           </div>
           <div class="input-field col s12 m6 l6">
             <i class="material-icons prefix">image</i>
-            <input id="text_image_edit" class="text validate" type="text" ng-model="cac.selectedComic.image"   required="" aria-required="true">
+            <input id="text_image_edit" class="text validate" type="text" ng-model="cac.selectedComic.image" required="" aria-required="true">
             <label for="text_image_edit" data-error="Error">*Imagen (Solo el nombre)</label>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12 m12 l12">
             <i class="material-icons prefix">description</i>
-            <textarea id="textarea_description_edit" class="materialize-textarea validate" ng-model="cac.selectedComic.description" required=""></textarea>
+            <textarea id="textarea_description_edit" class="materialize-textarea validate" ng-model="cac.selectedComic.description" required="" autofocus></textarea>
           <label for="textarea_description_edit" data-error="Error">*Descripcion</label>
           </div>
         </div>
@@ -149,7 +149,7 @@
             <h5><b>Comentarios: </b></h5>
           </div>
           <div class="card-panel" ng-repeat="comment in cac.selectedComic.comments">
-            <a class="waves-effect waves-light btn-floating red modal-close" ng-click="cac.deleteComment($index)"><i class="material-icons">delete_forever</i></a><b>Por: {{comment.author}}</b> 
+            <a class="waves-effect waves-light btn-floating red" ng-click="cac.deleteComment($index)">  <i class="material-icons">delete_forever</i></a><b>Por: {{comment.author}}</b>
             <p>
               {{comment.comment}}
             </p>
@@ -166,10 +166,10 @@
         <a href="#!" class=" modal-action modal-close waves-effect  waves-light btn amber lighten-1">Cancelar</a>
       </div>
       <div class="col m4 l4">
-        <a class="waves-effect waves-light btn red modal-close" ng-click="cac.deleteComic($index)">Eliminar</a>
+        <a class="waves-effect waves-light btn red modal-close" ng-click="cac.deleteComic()">Eliminar</a>
       </div>
       <div class="col m5 l5">
-        <a class="waves-effect waves-light btn orange" type="submit" name="action" ng-click="cac.editComic($index)">Editar</a>
+        <a class="waves-effect waves-light btn orange" type="submit" name="action" ng-click="cac.editComic()">Editar</a>
       </div>
     </div>
     <div class="row center-align hide-on-med-and-up">
@@ -177,10 +177,10 @@
         <a href="#!" class=" modal-action modal-close waves-effect waves-light btn-floating teal"><i class="material-icons">exit_to_app</i></a>
       </div>
       <div class="col s4">
-        <a class="waves-effect waves-light btn-floating red modal-close" ng-click="cac.deleteComic($index)"><i class="material-icons">delete_forever</i></a>
+        <a class="waves-effect waves-light btn-floating red modal-close" ng-click="cac.deleteComic()"><i class="material-icons">delete_forever</i></a>
       </div>
       <div class="col s4">
-        <a class="waves-effect waves-light btn-floating orange" type="submit" name="action" ng-click="cac.editComic($index)"><i class="material-icons">mode_edit</i></a>
+        <a class="waves-effect waves-light btn-floating orange" type="submit" name="action" ng-click="cac.editComic()"><i class="material-icons">mode_edit</i></a>
       </div>
     </div>
   </div>
