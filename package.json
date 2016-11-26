@@ -4,7 +4,8 @@
   "description": "Aplicacion para tienda de Comics",
   "main": "server/server.js",
   "scripts": {
-    "start": "export NODE_ENV=dev&& (nodemon server/server.js || node server/server.js)",
+    "start": "node server/server.js",
+    "startn": "export NODE_ENV=dev&& (nodemon server/server.js || node server/server.js)",
     "startw": "set NODE_ENV=dev&& (nodemon server/server.js || node server/server.js)"
   },
   "author": "Esteban Salazar",
